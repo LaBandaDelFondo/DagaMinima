@@ -1,5 +1,7 @@
 # DagaMinima
-npm install -g ionic
+#holii
+# probando otro push
+npm install -g cordova ionic
 
 npm i
 bower i
