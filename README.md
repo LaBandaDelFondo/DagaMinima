@@ -7,3 +7,5 @@ bower i
 Then run:
 
 ionic serve
+
+HOLUS
