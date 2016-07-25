@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter.controllers').controller('publishController', function($scope, $cordovaImagePicker, $cordovaCamera) {
+angular.module('starter.controllers').controller('publishController', function($scope, $cordovaImagePicker, $cordovaCamera, $ionicPlatform, $state) {
 
   $scope.images = [];
 
@@ -43,4 +43,10 @@ angular.module('starter.controllers').controller('publishController', function($
         // error getting photos
       });
   }
+
+  var deregister = $ionicPlatform.registerBackButtonAction(function() {
+    $state.go('home');
+  }, 101);
+
+  $scope.$on('$destroy', deregister);
 });
