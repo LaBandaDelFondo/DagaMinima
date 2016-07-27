@@ -2,31 +2,25 @@
 
 angular.module('starter')
     .config(function($translateProvider) {
-        $translateProvider.translations('en', {
-            home_title: "Home",
-            home_adoption: "Adoption",
-            home_cross: "Cross",
-            home_veterinary: "Veterinary",
-            home_pet_walk: "Pet walk",
-            home_wanted: "Wanted",
-
-            settings_title: "Settings",
-
-            general_maximum_dagger: "Maximum Dagger!"
-        });
-        $translateProvider.translations('es', {
-            home_title: "Inicio",
-            home_adoption: "Adopción",
-            home_cross: "Cruza",
-            home_veterinary: "Veterinaria",
-            home_pet_walk: "Paseo de mascotas",
-            home_wanted: "Buscados",
-
-            settings_title: "Configuración",
-            
-            general_maximum_dagger: "Daga Máxima!"
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'data/locale-',
+            suffix: '.json'
         });
         $translateProvider.preferredLanguage("en");
         $translateProvider.fallbackLanguage("en");
         $translateProvider.useSanitizeValueStrategy('escape');
+        $translateProvider.forceAsyncReload(true);
+    })
+    .run(function($ionicPlatform, $translate) {
+        $ionicPlatform.ready(function() {
+            if(typeof navigator.globalization !== "undefined") {
+                navigator.globalization.getPreferredLanguage(function(language) {
+                    $translate.use((language.value).split("-")[0]).then(function(data) {
+                        console.log("SUCCESS -> " + data);
+                    }, function(error) {
+                        console.log("ERROR -> " + error);
+                    });
+                }, null);
+            }
+        });
     });

@@ -80,4 +80,5 @@
     </plugin>
     <plugin name="cordova-plugin-image-picker" spec="https://github.com/wymsee/cordova-imagePicker.git" />
     <plugin name="cordova-plugin-camera" spec="~2.2.0" />
+    <plugin name="cordova-plugin-globalization" spec="~1.0.3" />
 </widget>

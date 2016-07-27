@@ -1,15 +1,14 @@
 <ion-view view-title="{{'settings_title' | translate}}" ng-controller="settingsController">
   <ion-content>
-    <ul class="list">
-      <li class="item item-toggle">
-        Spanish
-        <label class="toggle toggle-balanced">
-          <input ng-click="switchLanguage('es')" type="checkbox">
-          <div class="track">
-            <div class="handle"></div>
-          </div>
-        </label>
-      </li>
-    </ul>
+    <div class="list">
+      <div class="item item-divider item-icon-left">
+        <i class="icon ion-android-globe"></i>
+        {{"settings_select_language" | translate}}
+      </div>
+      <ion-list class="item">
+        <ion-radio ng-click="changeLanguage('en')" ng-model="language" ng-value="'en'">{{"settings_opt_english" | translate}}</ion-radio>
+        <ion-radio ng-click="changeLanguage('es')" ng-model="language" ng-value="'es'">{{"settings_opt_spanish" | translate}}</ion-radio>
+      </ion-list>
+    </div>
   </ion-content>
 </ion-view>
