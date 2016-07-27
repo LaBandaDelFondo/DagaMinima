@@ -1,0 +1,15 @@
+{
+    "home_title": "Home",
+    "home_adoption": "Adoption",
+    "home_cross": "Cross",
+    "home_veterinary": "Veterinary",
+    "home_pet_walk": "Pet walk",
+    "home_wanted": "Wanted",
+
+    "settings_title": "Settings",
+    "settings_select_language": "Select Language",
+    "settings_opt_english": "English",
+    "settings_opt_spanish": "Spanish",
+
+    "general_maximum_dagger": "Maximum Dagger!"
+}
