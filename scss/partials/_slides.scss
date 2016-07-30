@@ -4,13 +4,13 @@
 
 .slides {
   background-color: white;
-  .card .paw {
+  .card .item-body .paw{
     position: absolute;
     height: 9%;
     width: 12%;
     z-index: 10;
-    right: 6%;
-    top: 24%;
+    right: 3%;
+    top: 4%;
   }
   .item-avatar {
     background-color: #eee;
