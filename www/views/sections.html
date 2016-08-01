@@ -16,7 +16,6 @@
     <ion-slide-page ng-repeat="publication in publications">
       <ion-content>
         <div class="list card">
-          <img class="paw" ng-src="./img/paw.png"></img>
           <div class="item item-avatar">
             <img ng-src="{{publication.authorAvatar}}">
             <h2>{{publication.authorName}}</h2>
@@ -24,6 +23,7 @@
           </div>
           <div class="item item-body">
             <img class="full-image" src="{{publication.principalImage}}">
+            <button class="button button-icon paw icon ion-ios-paw" ng-click="setFavorite(publication)" ng-style = "{'color': publication.favorite ? 'green' : 'grey'}"></button>
             <p>
               {{publication.description}}
             </p>

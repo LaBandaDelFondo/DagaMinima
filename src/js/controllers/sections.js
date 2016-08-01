@@ -49,4 +49,10 @@ angular.module('starter.controllers').controller('sectionsController', function(
         break;
     }
   }
+
+  $scope.setFavorite = function(publication) {
+    publication.favorite = !publication.favorite;
+
+    //En wishlist.js mostrar todos las publicaciones con favorito === true ?
+  }
 });
