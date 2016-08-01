@@ -4,7 +4,7 @@
 
 .slides {
   background-color: white;
-  .card .item-body .paw{
+  .card .paw {
     position: absolute;
     height: 9%;
     width: 12%;
@@ -12,6 +12,7 @@
     right: 3%;
     top: 4%;
   }
+
   .item-avatar {
     background-color: #eee;
   }

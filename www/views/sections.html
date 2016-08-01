@@ -23,7 +23,7 @@
           </div>
           <div class="item item-body">
             <img class="full-image" src="{{publication.principalImage}}">
-            <button class = "button paw icon ion-ios-paw" ></button>
+            <button class="button button-icon paw icon ion-ios-paw" ng-click="setFavorite(publication)" ng-style = "{'color': publication.favorite ? 'green' : 'grey'}"></button>
             <p>
               {{publication.description}}
             </p>
