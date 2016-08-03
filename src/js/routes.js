@@ -5,6 +5,15 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
 
   $stateProvider
 
+    .state('wishlist', {
+    url: '/wishlist',
+    views: {
+      'menuContent': {
+        templateUrl: 'views/wishlist.html',
+      }
+    }
+  })
+
     .state('publish', {
     url: '/publish',
     views: {

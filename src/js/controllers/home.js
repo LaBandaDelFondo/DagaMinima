@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starter.controllers').controller('homeController', function($scope, $timeout, sectionsService) {
+angular.module('starter.controllers').controller('homeController', function($scope, $timeout, sectionsService, wishlistService) {
   $scope.options = {
     loop: false,
     effect: 'flip',
@@ -48,5 +48,10 @@ angular.module('starter.controllers').controller('homeController', function($sco
         $scope.section = 'Lost';
         break;
     }
+  }
+
+  $scope.setFavorite = function(publication) {
+    publication.favorite = !publication.favorite;
+    wishlistService.addFavoritePub(publication);
   }
 });
