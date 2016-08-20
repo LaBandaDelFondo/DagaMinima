@@ -18,12 +18,15 @@
         <ion-scroll>
           <div class="list card">
             <div class="item item-avatar m0b m0t">
-              <img ng-src="{{publication.picture}}">
+              <img ng-src="{{publication.picture}}" ng-click="profilePopup(publication)">
               <h2>{{publication.name}}</h2>
               <p>{{publication.creationTime * 1000 | amTimeAgo}}</p>
             </div>
             <div class="item item-body m0b m0t p0">
-              <img class="full-image" ng-src="{{publication.imageURI}}">
+              <div>
+                <img class="full-image" ng-src="{{publication.imageURI}}" on-double-tap="contact(publication)">
+                <i ng-show="showPaw" class="ion-ios-paw size-72"></i>
+              </div>
               <p class="m10l">
                 {{publication.description}}
               </p>

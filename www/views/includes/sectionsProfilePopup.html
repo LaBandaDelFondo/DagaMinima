@@ -1,0 +1,8 @@
+<div class="profile-popup">
+  <h2><span>{{publication.name}}</span></h2>
+  <img class="image-profile-popup" ng-src={{publication.picture}}>
+  <div class="button-bar">
+    <button class="button button-icon icon ion-information-circled" ng-click="openProfile(publication.id)"></button>
+    <button class="button button-icon icon ion-close-round" ng-click="cancel()"></button>
+  </div>
+</div>
