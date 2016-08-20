@@ -2,6 +2,8 @@
 
 angular.module('starter.controllers').controller('sectionsController', function($scope, $timeout, $state, sectionsService, storageService, $cordovaSocialSharing, lodash, $ionicPopup) {
 
+  $scope.showPaw = false;
+
   $scope.options = {
     loop: false,
     effect: 'flip',
@@ -85,4 +87,23 @@ angular.module('starter.controllers').controller('sectionsController', function(
       //Change view to selected profile view
     }
   }
+
+  $scope.contact = function(publication){
+    console.log("contact");
+    $scope.setFavorite(publication);
+  //  $scope.showAlert();
+    $scope.showPaw = true;
+    setTimeout(function() {
+      $scope.$apply(function() {
+        $scope.showPaw = false;
+      });
+    }, 1000);
+  }
+
+  $scope.showAlert = function() {
+    var notificationPopup = $ionicPopup.alert({
+      title: 'Notification has been send',
+      template: 'Notification send'
+    });
+  };
 });
