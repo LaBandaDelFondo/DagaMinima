@@ -3,13 +3,14 @@
 angular.module('starter.controllers').controller('sectionsController', function($scope, $timeout, $state, $ionicSideMenuDelegate, sectionsService, storageService, $cordovaSocialSharing, lodash, $ionicPopup) {
 
   $ionicSideMenuDelegate.canDragContent(true);
+  $scope.showPaw = false;
 
   $scope.options = {
     loop: false,
     effect: 'flip',
     speed: 500,
     direction: 'vertical',
-    spaceBetween: 100
+    spaceBetween: 0
   }
 
   $scope.$on("$ionicSlides.sliderInitialized", function(event, data) {
@@ -87,5 +88,16 @@ angular.module('starter.controllers').controller('sectionsController', function(
     $scope.openProfile = function(id) {
       //Change view to selected profile view
     }
+  }
+
+  $scope.contact = function(publication){
+    console.log("contact");
+    $scope.setFavorite(publication);
+    $scope.showPaw = true;
+    setTimeout(function() {
+      $scope.$apply(function() {
+        $scope.showPaw = false;
+      });
+    }, 750);
   }
 });

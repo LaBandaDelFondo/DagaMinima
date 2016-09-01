@@ -7,6 +7,22 @@ angular.module('starter').config(function($stateProvider, $urlRouterProvider, $i
   $ionicConfigProvider.platform.android.navBar.alignTitle('center');
 
   $stateProvider
+    .state('chat', {
+      url: '/chats/:chatId',
+      views: {
+        'menuContent': {
+          templateUrl: 'views/chat.html',
+        }
+      }
+    })
+    .state('chats', {
+      url: '/chats',
+      views: {
+        'menuContent': {
+          templateUrl: 'views/chats.html',
+        }
+      }
+    })
     .state('wishlist', {
       url: '/wishlist',
       views: {
