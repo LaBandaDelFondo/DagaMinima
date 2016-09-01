@@ -14,14 +14,17 @@
       </div>
     </ion-nav-title>
     <ion-nav-buttons side="left">
-      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-      </button>
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-ios-filing-outline"></button>
+      <ion-badge item-right>0</ion-badge>
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-slides class="slides has-header has-footer" options="options" slider="data.slider">
     <ion-slide-page ng-repeat="publication in publications">
       <ion-content>
-        <ion-scroll>
+        <ion-scroll scrollbar-y="false">
           <div class="list card">
             <div class="item item-avatar m0b m0t">
               <img ng-src="{{publication.picture}}" ng-click="profilePopup(publication)">
@@ -29,13 +32,17 @@
               <p>{{publication.creationTime * 1000 | amTimeAgo}}</p>
             </div>
             <div class="item item-body m0b m0t p0">
-              <img class="full-image" ng-src="{{publication.imageURI}}">
+              <div>
+                <img class="full-image" ng-src="{{publication.imageURI}}" on-double-tap="contact(publication)">
+                <i ng-show="showPaw" class="ion-ios-paw size-72"></i>
+              </div>
               <p class="m10l">
                 {{publication.description}}
               </p>
             </div>
             <div class="button-bar">
-              <button ng-class="{'ion-ios-star-outline unselected': !isFavorite(publication), 'ion-ios-star selected': isFavorite(publication)}" class="button button-icon icon" ng-click="setFavorite(publication)"></button>
+              <button ng-class="{'ion-ios-paw-outline unselected': !isFavorite(publication), 'ion-ios-paw selected': isFavorite(publication)}" class="button button-icon icon" ng-click="setFavorite(publication)"></button>
+              <button class="button button-icon icon ion-ios-email-outline"></button>
               <button class="button button-icon icon ion-ios-upload-outline" ng-click="share(publication.description,publication.principalImage)"></button>
               <button class="button button-icon icon ion-ios-more-outline" ng-click="sectionsMorePopup()"></button>
             </div>
