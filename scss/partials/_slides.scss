@@ -4,6 +4,11 @@
 
 .slides {
   background-color: white;
+
+  .card{
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+  }
+
   .card .paw {
     position: absolute;
     height: 9%;

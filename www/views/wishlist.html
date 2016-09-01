@@ -8,9 +8,9 @@
   </ion-nav-bar>
   <ion-content>
     <div class="list">
-      <a ng-repeat="publication in favoritePubs | orderBy : 'postDate'" class="item item-thumbnail-left item-text-wrap" href="#">
-        <img src="{{publication.principalImage}}">
-        <time>{{publication.postDate * 1000 | amTimeAgo}}</time>
+      <a ng-repeat="publication in favoritePubs | orderBy : 'creationTime'" class="item item-thumbnail-left item-text-wrap" href="#">
+        <img src="{{publication.imageURI}}">
+        <time>{{publication.creationTime * 1000 | amTimeAgo}}</time>
         <p>{{publication.description}}</p>
       </a>
     </div>

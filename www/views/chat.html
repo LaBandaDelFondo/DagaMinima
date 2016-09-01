@@ -1,0 +1,33 @@
+<ion-view title="{{ chat.name }}" ng-controller="chatController">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-title>Chats</ion-nav-title>
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear"><img class="header-picture" ng-src="{{ chat.picture }}"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="chat">
+    <div class="message-list">
+      <div ng-repeat="message in chat.messages" class="message-wrapper">
+        <div class="message" ng-class-even="'message-mine'" ng-class-odd="'message-other'">
+          <div class="message-text">{{ message.text }}</div>
+          <span class="message-timestamp">{{ message.timestamp * 1000 | amDateFormat: 'HH:MM'}}</span>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar keyboard-attach class="bar-stable footer-chat item-input-inset">
+
+    <label class="item-input-wrapper">
+      <input ng-model="chat.text"
+             dir="auto"
+             type="text"/>
+    </label>
+    <span>
+      <button ng-click="sendMessage(chat.text)" class="button button-icon button-clear button-positive ion-paper-airplane"></button>
+    </span>
+  </ion-footer-bar>
+</ion-view>
