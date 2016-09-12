@@ -1,6 +1,39 @@
 'use strict';
 
-angular.module('starter.controllers').controller('profileController', function($scope) {
+angular.module('starter.controllers').controller('profileController', function($scope, $timeout, $ionicPopup, storageService, facebookService) {
+
+  var user = storageService.getLocalUser();
+
+  facebookService.getUser(user.userID, function(err, data) {
+    if (err) {
+      console.log("could not get data from server: " + JSON.stringify(err));
+      return;
+    }
+    console.log("Success get request from server: " + JSON.stringify(data));
+
+    $scope.user = data;
+    $timeout(function() {
+      $scope.$apply();
+    }, 1);
+  });
+
+  $scope.descriptionPopup = function() {
+
+    var descriptionPopup = $ionicPopup.show({
+      templateUrl: './views/includes/descriptionPopup.html',
+      scope: $scope
+    });
+
+    $scope.cancel = function() {
+      descriptionPopup.close();
+    };
+
+    $scope.accept = function(about) {
+      $scope.user.about = about;
+      descriptionPopup.close();
+    };
+  }
+
   $scope.publications = [
     {
       authorAvatar: './img/mcfly.jpg',

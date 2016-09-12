@@ -1,0 +1,22 @@
+<div class="columns m20t">
+  <form name="profileForm">
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">{{'profile_about' | translate}}
+        <small class="has-error" ng-show="profileForm.about.$error.maxlength && !profileForm.about.$pristine">{{'long' | translate}}</small>
+      </span>
+      <textarea ng-model="formData.about" type="text" name="about" autocomplete="off" ng-maxlength="100" required></textarea>
+    </label>
+  </form>
+  <div class="row">
+    <div class="col">
+      <button class="button button-full button-dark" ng-click="cancel()">
+        {{'cancel' | translate}}
+      </button>
+    </div>
+    <div class="col">
+      <button class="button button-full button-dark" ng-click="accept(formData.about)">
+        {{'ok' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

@@ -8,3 +8,4 @@ bower_components/
 www/js/
 www/css/ionic.app.css
 www/css/ionic.app.min.css
+npm-debug.log

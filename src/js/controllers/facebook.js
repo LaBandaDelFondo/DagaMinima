@@ -24,13 +24,22 @@ angular.module('starter.controllers').controller('facebookLoginController', func
         userID: profileInfo.id,
         name: profileInfo.name,
         email: profileInfo.email,
+        verified: profileInfo.verified,
+        ageRange: profileInfo.age_range.min,
+        location: profileInfo.location.name,
+        education: profileInfo.education[0].school.name,
+        workPositionName: profileInfo.work[0].position.name,
+        workEmployerName: profileInfo.work[0].employer.name,
+        about: null,
+        admissionDate: moment().unix(),
         picture: "http://graph.facebook.com/" + authResponse.userID + "/picture?width=600&height=600"
       };
 
       storageService.setLocalUser(user);
 
-      checkRemoteCredentials(user.userID, user.name, user.facebookToken, function(val) {
-        if (val) $rootScope.$emit('Local/FacebookLogin', user);
+      console.log('Cheking remote credentials');
+      checkRemoteCredentials(user, function(success) {
+        if (success) $rootScope.$emit('Local/FacebookLogin', user);
       });
     });
   };
@@ -42,7 +51,7 @@ angular.module('starter.controllers').controller('facebookLoginController', func
 
   // This method is to get the user profile info from the facebook api
   var getFacebookProfileInfo = function(authResponse, cb) {
-    facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
+    facebookConnectPlugin.api('/me?fields=id,name,age_range,verified,location,education,work&access_token=' + authResponse.accessToken, null,
       function(success) {
         console.log(JSON.stringify(success));
         return cb(success, null);
@@ -53,23 +62,20 @@ angular.module('starter.controllers').controller('facebookLoginController', func
       });
   };
 
-  var checkRemoteCredentials = function(userID, name, facebookToken, cb) {
-    facebookService.getUser(userID, function(err, data) {
+  var checkRemoteCredentials = function(user, cb) {
+    facebookService.getUser(user.userID, function(err, data) {
       if (err) {
         console.log("could not get data from server: " + JSON.stringify(err));
+        return cb(false);
       }
 
       if (data != 'User not found') {
         console.log("Success get request from server: " + JSON.stringify(data));
         return cb(true);
       } else {
-        console.log("Success get request from server: " + JSON.stringify(data));
+        console.log("Success get request from server: User not found");
 
-        facebookService.setUser({
-          userID: userID,
-          name: name,
-          picture: "http://graph.facebook.com/" + facebookToken.userID + "/picture?width=600&height=600"
-        }, function(err, data) {
+        facebookService.setUser(user, function(err, data) {
           if (err) {
             console.log("could not save data on server: " + JSON.stringify(err));
             return cb(false);
@@ -105,12 +111,19 @@ angular.module('starter.controllers').controller('facebookLoginController', func
               userID: profileInfo.id,
               name: profileInfo.name,
               email: profileInfo.email,
+              verified: profileInfo.verified,
+              ageRange: profileInfo.age_range.min,
+              location: profileInfo.location.name,
+              education: profileInfo.education[0].school.name,
+              workPositionName: profileInfo.work[0].position.name,
+              workEmployerName: profileInfo.work[0].employer.name,
+              about: null,
+              admissionDate: moment().unix(),
               picture: "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
             };
 
-            storageService.setLocalUser(user);
-
-            checkRemoteCredentials(user.userID, user.name, user.facebookToken, function(val) {
+            console.log('Checking remote credentials');
+            checkRemoteCredentials(user, function(val) {
               if (val) $rootScope.$emit('Local/FacebookLogin', user);
             });
           });
@@ -125,7 +138,7 @@ angular.module('starter.controllers').controller('facebookLoginController', func
         console.log('getLoginStatus: ' + success.status);
         // Ask the permissions you need. You can learn more about
         // FB permissions here: https://developers.facebook.com/docs/facebook-login/permissions/v2.4
-        facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
+        facebookConnectPlugin.login(['email', 'public_profile', 'user_education_history', 'user_location', 'user_work_history'], fbLoginSuccess, fbLoginError);
       }
     });
   };

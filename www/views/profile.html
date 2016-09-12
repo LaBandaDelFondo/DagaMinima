@@ -8,51 +8,41 @@
   </ion-nav-bar>
   <ion-content>
     <img class="w100" ng-src="{{user.picture}}">
-    <h1 class="color-black text-center">Soy {{user.name}}!</h2>
-    <h5 class="color-black text-center">San Miguel de Tucumán, Argentina</h5>
+    <h1 class="color-black text-center" ng-if="user.name">{{'profile_Iam' | translate}} {{user.name}}!</h2>
+    <h5 class="color-black text-center" ng-if="user.location">{{user.location}}</h5>
     <div class="list">
       <div class="item item-divider">
-       Confia en mi, mirá:
+       {{'profile_trust' | translate}}
       </div>
       <div class="row line-b">
-        <div class="col"><h6 class="text-gray">Miembro desde</h5></div>
-        <div class="col ellipsis"><h5 class="color-black oh">12/01/2016</h5></div>
+        <div class="col"><h6 class="text-gray">{{'profile_member' | translate}}</h5></div>
+        <div class="col ellipsis"><h5 class="color-black oh">{{user.admissionDate}}</h5></div>
+      </div>
+      <div class="row line-b" ng-if="user.education">
+        <div class="col"><h6 class="text-gray">{{'profile_education' | translate}}</h5></div>
+        <div class="col ellipsis"><h5 class="color-black oh">{{user.education}}</h5></div>
       </div>
       <div class="row line-b">
-        <div class="col"><h6 class="text-gray">Centro educativo</h5></div>
-        <div class="col ellipsis"><h5 class="color-black oh">Faculdad de Ciencias Exactas UNT</h5></div>
+        <div class="col"><h6 class="text-gray">{{'profile_work' | translate}}</h5></div>
+        <div class="col ellipsis"><h5 class="color-black oh" ng-if="user.workEmployerName">{{user.workPositionName}} at {{user.workEmployerName}}</h5></div>
       </div>
-      <div class="row line-b">
-        <div class="col"><h6 class="text-gray">Empleo</h5></div>
-        <div class="col ellipsis"><h5 class="color-black oh">Bitpay</h5></div>
+      <div class="item item-divider item-icon-right">
+       {{'profile_about' | translate}}
+        <i class="icon ion-ios-plus-empty" ng-if="!user.about" ng-click="descriptionPopup()"></i>
+      </div>
+      <div class="text-center">
+        <span ng-if="!user.about">{{'profile_noAbout' | translate}}</span>
+        <span ng-if="user.about">{{user.about}}</span>
       </div>
       <div class="item item-divider">
-       Descripción:
+       {{'profile_verified' | translate}}
       </div>
-      <div class="item item-divider">
-       Cuenta verificada:
-      </div>
-      <div class="item item-icon-right" href="#">
+      <div class="item item-icon-right" ng-if="user.verified">
         Facebook
         <i class="icon ion-social-facebook-outline"></i>
       </div>
       <div class="item item-divider">
-       Visitame en:
-      </div>
-      <div class="item item-icon-right line-b" href="#">
-        Facebook
-        <i class="icon ion-social-facebook-outline"></i>
-      </div>
-      <div class="item item-icon-right line-b" href="#">
-        Instagram
-        <i class="icon ion-social-instagram-outline"></i>
-      </div>
-      <div class="item item-icon-right line-b" href="#">
-        Twitter
-        <i class="icon ion-social-twitter-outline"></i>
-      </div>
-      <div class="item item-divider">
-       Mis publicaciones
+       {{'profile_mypublications' | translate}}
       </div>
       <a ng-repeat="publication in publications | orderBy : 'postDate'" class="item item-thumbnail-left item-text-wrap" href="#">
         <img src="{{publication.principalImage}}">

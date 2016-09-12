@@ -23,7 +23,6 @@
     "publish_description":"Descripción",
     "publish_image":"Imagen de la publicacion",
     "publish_required":"campo requerido",
-    "publish_long":"demasiado largo!",
     "publish_err":"Error subiendo la publicación, por favor intente de nuevo",
 
     "posts_title": "Mis Publicaciones",
@@ -59,5 +58,19 @@
     "cancel": "Cancelar",
     "ok": "OK",
 
-    "delete": "Borrar"
+    "delete": "Borrar",
+
+    "profile_about": "Escribe algo sobre tí",
+    "profile_trust": "Confia en mí, mirá",
+    "profile_Iam": "Soy",
+    "profile_member": "Miembro desde",
+    "profile_education": "Centro educativo",
+    "profile_work": "Trabajo",
+    "profile_about": "Sobre mí",
+    "profile_noAbout": "Sin descripción",
+    "profile_verified": "Cuenta verificada",
+    "profile_mypublications": "Mis publicaciones",
+
+    "long": "demasiado largo!"
+
 }

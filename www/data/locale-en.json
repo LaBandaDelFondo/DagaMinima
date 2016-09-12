@@ -19,12 +19,11 @@
     "general_maximum_dagger": "Maximum Dagger!",
 
     "publish_title": "Publish",
-    "publish_category":"Category",
-    "publish_description":"Description",
-    "publish_image":"Image to publish",
-    "publish_required":"is required",
-    "publish_long":"too long!",
-    "publish_err":"Error uploading the file, please try again",
+    "publish_category": "Category",
+    "publish_description": "Description",
+    "publish_image": "Image to publish",
+    "publish_required": "is required",
+    "publish_err": "Error uploading the file, please try again",
 
     "posts_title": "My Posts",
 
@@ -57,6 +56,18 @@
     "cancel": "Cancel",
     "ok": "OK",
 
-    "delete": "Delete"
+    "delete": "Delete",
 
+    "profile_about": "Write something about you",
+    "profile_trust": "Trust me, look",
+    "profile_Iam" : "I'am",
+    "profile_member": "Member since",
+    "profile_education": "Education Center",
+    "profile_work": "Work",
+    "profile_about": "About me",
+    "profile_noAbout": "No description yet",
+    "profile_verified": "Verified account",
+    "profile_mypublications": "My publications",
+
+    "long": "too long!"
 }

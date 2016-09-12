@@ -72,6 +72,7 @@ gulp.task('android', function() {
   sh.exec('gulp');
   sh.exec('ionic build android');
   sh.exec('ionic run android');
+  sh.exec('adb logcat | grep starter');
 });
 
 gulp.task('git-check', function(done) {

@@ -30,7 +30,7 @@
             <label class="item item-input item-stacked-label">
               <span class="input-label">{{'publish_description' | translate}}
                 <small class="has-error" ng-show="publishForm.description.$error.required && !publishForm.description.$pristine">{{'publish_required' | translate}}</small>
-                <small class="has-error" ng-show="publishForm.description.$error.maxlength && !publishForm.description.$pristine">{{'publish_long' | translate}}</small>
+                <small class="has-error" ng-show="publishForm.description.$error.maxlength && !publishForm.description.$pristine">{{'long' | translate}}</small>
               </span>
               <textarea ng-model="formData.description" type="text" name="description" autocomplete="off" ng-maxlength="100" required></textarea>
             </label>

@@ -11,7 +11,7 @@ angular.module('starter.services').factory('languageService', function languageS
     }];
 
   root.isAvailableLanguage = function(language) {
-    return lodash.find(availableLanguages, {
+    return lodash.find(root.availableLanguages, {
       'isoCode': language
     }) ? language : 'en';
   };

@@ -5,11 +5,12 @@ angular.module('starter.services').factory('storageService', function($http, $lo
   var root = {};
 
   root.setLocalUser = function(user) {
+    console.log('saving user in local storage');
     window.localStorage.setItem('user', JSON.stringify(user));
   };
 
   root.getLocalUser = function() {
-    return JSON.parse(window.localStorage.user || null);
+    return JSON.parse(window.localStorage.user || '{}');
   };
 
   root.deleteLocalUser = function() {

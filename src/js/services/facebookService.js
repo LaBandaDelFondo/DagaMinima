@@ -7,7 +7,7 @@ angular.module('starter.services').factory('facebookService', function($http, $l
   root.setUser = function(user, cb) {
     var req = {
       method: 'POST',
-      url: 'http://192.168.1.109:3000/login',
+      url: 'http://192.168.1.108:3000/login',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -24,7 +24,7 @@ angular.module('starter.services').factory('facebookService', function($http, $l
   root.getUser = function(userID, cb) {
     var req = {
       method: 'GET',
-      url: 'http://192.168.1.109:3000/login/' + userID,
+      url: 'http://192.168.1.108:3000/login/' + userID,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
